@@ -6,9 +6,9 @@ The island prayer timetable for the Maldives (205 islands, 42 timetable categori
 2. **Bad values in the data.** 15 base values (114 island values) are wrong: mostly sunrise times an hour late, plus one Isha time 10 minutes early.
 3. **Island names.** 33 English island names are corrected to the official spelling (see [Island names](#island-names)).
 
-The data comes from [n4ff4h/namaadhu_app](https://github.com/n4ff4h/namaadhu_app) (MIT, commit `f610de5`), which copies the table used by the salatmv app. namaadhuvaguthu.com and dhivehi.mv have the same errors, plus one more (see [Websites with the same errors](#websites-with-the-same-errors)), so they seem to use the same source.
+The data comes from [n4ff4h/namaadhu_app](https://github.com/n4ff4h/namaadhu_app) (MIT, commit `f610de5`).
 
-Checked on 25 November 2026 against namaadhuvaguthu.com, and against times worked out from the sun's position.
+Checked on 25 November 2026 against times worked out from the sun's position.
 
 ---
 
@@ -30,9 +30,9 @@ The obvious lookup, `row = day of year` (1 January = 1), is wrong:
 - **Leap years, all year:** shows the next day's times. On 31 December the day of year is 366, which is not a row at all. With `% 366` it wraps to row 0, which holds 1 January.
 - **Normal years, 1 March to 31 December:** happens to be right.
 
-namaadhu_app has this bug: it matches `element.id == dayOfYear`, where `dayOfYear` is `DateFormat("D")`, counting from 1.
+namaadhu_app's own lookup does this: it matches `element.id == dayOfYear`, where `dayOfYear` is `DateFormat("D")`, counting from 1.
 
-**Evidence.** namaadhuvaguthu.com reads the rows this way: every row matched for 2026 and for 2028. Sunrise, sunset and noon worked out from the sun's position also fit this reading better than the day-of-year reading, in all 42 categories.
+**Evidence.** Sunrise, sunset and noon worked out from the sun's position fit this reading better than the day-of-year reading, in all 42 categories.
 
 ### Correct lookup
 
@@ -72,13 +72,11 @@ The result is always between 0 and 365, no two dates in a year share a row, and 
 | 2028-03-01 | 60 | 05:04 | 06:16 | 12:23 | 15:36 | 18:21 | 19:33 |
 | 2028-12-31 | 365 | 04:54 | 06:10 | 12:13 | 15:33 | 18:07 | 19:25 |
 
-These match namaadhuvaguthu.com.
-
 ---
 
 ## Problem 2: bad values in the data
 
-Any value more than 4 minutes from the average of the days either side was flagged, then checked against namaadhuvaguthu.com and the sun's position. The upstream data has 150 such flags. All of them come from the 15 values below; the rest are the neighbouring days, flagged because they sit next to a bad value. After the fix there are none.
+Any value more than 4 minutes from the average of the days either side was flagged, then checked against the sun's position. The upstream data has 150 such flags. All of them come from the 15 values below; the rest are the neighbouring days, flagged because they sit next to a bad value. After the fix there are none.
 
 Times below are the **category base time** (offset 0). Islands with an offset of +1 or −1 minute have the same error shifted by that minute, and are corrected the same way.
 
@@ -122,7 +120,7 @@ The dates in the table are the same in every year, because rows after February l
 
 ## Island names
 
-The English names in namaadhu_app are spelled inconsistently. They are corrected to the island names in the Elections Commission of Maldives' constituency list for the Local Council Election 2026 ([elections.gov.mv](https://elections.gov.mv)), fetched on 25 November 2026. These are the islands' official council names.
+The English names in namaadhu_app are spelled inconsistently. They are corrected to the islands' official council names, as listed by the Elections Commission of Maldives for the Local Council Election 2026.
 
 Only the English names change. The Dhivehi names (`name_dv`) and Arabic names are as in namaadhu_app. Islands that list does not have on their own keep their names. These are most inactive islands, L. Gaadhoo, and GDh. Fares and GDh. Maathoda, which the Elections Commission lists together as Faresmaathodaa. For HA. Molhadhoo, the source's Dhivehi name is މުޅަދޫ.
 
@@ -166,23 +164,12 @@ The list is in [`names.csv`](names.csv). `tools/fix_timetable.py` applies it to 
 
 ---
 
-## Websites with the same errors
+## Other sites checked
 
-Checked on 25 November 2026, for 2026.
+On 25 November 2026 we also looked at two Maldivian prayer-time sites. They seem to use the same timetable, so these notes may be useful to the people who run them. We're grateful for their work in sharing prayer times.
 
-| | namaadhuvaguthu.com | dhivehi.mv |
-|---|---|---|
-| The 15 bad values above | all present | all present |
-| Category 77 Dhuhr, 6–8 Oct, shown as **12:59** (should be 11:59) | present | present |
-| Date of row 0 / row 60 | 1 Jan / 1 Mar (correct) | 1 Jan / 1 Mar (correct) |
-| 29 February in a normal year | skipped (correct) | **shows a "2026-02-29" row** |
-| Islands with no times | Sh. Milandhoo not listed (others not checked) | **Sh. Milandhoo, R. Dhuvaafaru, R. Hulhudhuffaaru: empty table** |
-
-The Dhuhr error in category 77 is not in namaadhu_app, whose Dhuhr on those days is 11:59. It affects the five islands in that category: GA. Kolamaafushi, GA. Vilingili, GA. Maamendhoo, GA. Nilandhoo and GA. Dhaandhoo.
-
-On dhivehi.mv the year table at `/prayer-times/` (with no island chosen) is for category 77, though the island box shows K. Malé. With `?iid=480` it shows Malé's times. GDh. Fares and GDh. Maathoda appear there as one island, Faresmaathodaa.
-
-[`sites/dhivehi.mv.csv`](sites/dhivehi.mv.csv) lists every wrong value dhivehi.mv shows: 125 values across 50 islands, each with the site's island id, the date, what it shows, what it should be, and a link to the page. It was made by downloading each island's page from dhivehi.mv and comparing it with `data/`.
+- **namaadhuvaguthu.com**: dates are matched to the right rows. It shows the 15 values in [Problem 2](#problem-2-bad-values-in-the-data) as they are in the source. It also shows Dhuhr as 12:59 on 6–8 October for the five islands in category 77 (GA. Kolamaafushi, Vilingili, Maamendhoo, Nilandhoo and Dhaandhoo), where 11:59 looks right.
+- **dhivehi.mv**: shows the same values, including that Dhuhr on 6–8 October. Its 2026 table also has a row for 29 February. Three islands, Sh. Milandhoo, R. Dhuvaafaru and R. Hulhudhuffaaru, show an empty table. Before an island is chosen, the table shows another island's times than the one named in the island box.
 
 ---
 
@@ -197,7 +184,6 @@ data/                 corrected copy, same layout as namaadhu_app's assets/csv
                       minutes after local midnight (Maldives time, UTC+5), island offset already applied
 corrections.csv       the 15 corrections, as category base times
 names.csv             the 33 English name corrections
-sites/dhivehi.mv.csv  every wrong value shown on dhivehi.mv (2026), with page links
 tools/fix_timetable.py    rebuilds data/ from upstream; stops if any "from" value doesn't match
 tools/check_timetable.py  the jump and order check
 ```
@@ -220,7 +206,7 @@ The check fails on any value more than 4 minutes from the average of the days ei
 ## Caveats
 
 - This fixes values that are plainly inconsistent with the days around them. It does not confirm that the rest of the timetable is right. The official publisher (understood to be the Ministry of Islamic Affairs) has not reviewed these corrections.
-- For the two sunrise values in category 80 and the Isha value in category 75, the corrected value comes from the sun's position and the days either side. namaadhuvaguthu.com has the same wrong values, so it can't confirm the fix.
+- For the two sunrise values in category 80 and the Isha value in category 75, the corrected value comes from the sun's position and the days either side.
 
 ## Licence
 

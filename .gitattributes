@@ -1,3 +1,2 @@
 # Keep the data byte-for-byte as upstream (CRLF, no final newline).
 data/** -text
-sites/** -text
