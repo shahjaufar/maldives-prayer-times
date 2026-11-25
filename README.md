@@ -10,6 +10,15 @@ The data comes from [n4ff4h/namaadhu_app](https://github.com/n4ff4h/namaadhu_app
 
 Checked on 25 November 2026 against times worked out from the sun's position.
 
+## Download
+
+The [latest release](https://github.com/shahjaufar/maldives-prayer-times/releases/latest) has two ready-to-use CSV files:
+
+- **`islands.csv`:** one row per island: `island_id, atoll, atoll_dv, name_en, name_dv, category_id, offset_min, lat, lon, active`.
+- **`prayer_times.csv`:** one row per island and calendar day, 366 days in all: `island_id, atoll, island, island_dv, month, day, leap_year_only, fajr, sunrise, dhuhr, asr, maghrib, isha`. Times are local Maldives time (UTC+5), HH:MM, with the island's offset applied. Rows are labelled by month and day, so no row arithmetic is needed. Skip 29 February (`leap_year_only = 1`) in normal years.
+
+Both files are UTF-8 with a byte-order mark, so Excel shows the Dhivehi names correctly. They are made by `python tools/export_release.py data dist`.
+
 ---
 
 ## Problem 1: the day lookup is one day ahead in January and February
@@ -186,6 +195,7 @@ corrections.csv       the 15 corrections, as category base times
 names.csv             the 33 English name corrections
 tools/fix_timetable.py    rebuilds data/ from upstream; stops if any "from" value doesn't match
 tools/check_timetable.py  the jump and order check
+tools/export_release.py   writes the release CSVs (islands.csv, prayer_times.csv)
 ```
 
 The files in `data/` keep upstream's format exactly: CRLF line endings, and no final newline in the island files. You can drop them into a namaadhu_app checkout.
