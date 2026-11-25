@@ -5,7 +5,7 @@ The island prayer timetable for the Maldives (205 islands, 42 timetable categori
 1. **How the rows are read.** The 366 rows are a leap-year calendar. Reading them by day of year shows the wrong day's times from 1 January to 28 February, and all year in leap years.
 2. **Bad values in the data.** 15 base values (114 island values) are wrong: mostly sunrise times an hour late, plus one Isha time 10 minutes early.
 
-The data comes from [n4ff4h/namaadhu_app](https://github.com/n4ff4h/namaadhu_app) (MIT, commit `f610de5`), which copies the table used by the salatmv app. namaadhuvaguthu.com has the same errors, so it seems to use the same source.
+The data comes from [n4ff4h/namaadhu_app](https://github.com/n4ff4h/namaadhu_app) (MIT, commit `f610de5`), which copies the table used by the salatmv app. namaadhuvaguthu.com and dhivehi.mv have the same errors, plus one more (see [Websites with the same errors](#websites-with-the-same-errors)), so they seem to use the same source.
 
 Checked on 25 November 2026 against namaadhuvaguthu.com, and against times worked out from the sun's position.
 
@@ -116,6 +116,26 @@ The dates in the table are the same in every year, because rows after February l
 | 75 | L. Isdhoo, L. Dhambidhoo, L. Maabaidhoo, L. Mundoo, L. Kalhaidhoo (inactive), L. Gan |
 
 47 island files change. The other 158 are the same as upstream.
+
+---
+
+## Websites with the same errors
+
+Checked on 25 November 2026, for 2026.
+
+| | namaadhuvaguthu.com | dhivehi.mv |
+|---|---|---|
+| The 15 bad values above | all present | all present |
+| Category 77 Dhuhr, 6–8 Oct, shown as **12:59** (should be 11:59) | present | present |
+| Date of row 0 / row 60 | 1 Jan / 1 Mar (correct) | 1 Jan / 1 Mar (correct) |
+| 29 February in a normal year | skipped (correct) | **shows a "2026-02-29" row** |
+| Islands with no times | Sh. Milandhoo not listed (others not checked) | **Sh. Milandhoo, R. Dhuvaafaru, R. Hulhudhuffaaru: empty table** |
+
+The Dhuhr error in category 77 is not in namaadhu_app, whose Dhuhr on those days is 11:59. It affects the five islands in that category: GA. Kolamaafushi, GA. Vilingili, GA. Maamendhoo, GA. Nilandhoo and GA. Dhaandhoo.
+
+On dhivehi.mv the year table at `/prayer-times/` (with no island chosen) is for category 77, though the island box shows K. Malé. With `?iid=480` it shows Malé's times. GDh. Fares and GDh. Maathoda appear there as one island, Faresmaathodaa.
+
+[`sites/dhivehi.mv.csv`](sites/dhivehi.mv.csv) lists every wrong value dhivehi.mv shows: 125 values across 50 islands, each with the site's island id, the date, what it shows, what it should be, and a link to the page. It was made by downloading each island's page from dhivehi.mv and comparing it with `data/`.
 
 ---
 
