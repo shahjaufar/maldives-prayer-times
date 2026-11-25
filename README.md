@@ -149,6 +149,7 @@ data/                 corrected copy, same layout as namaadhu_app's assets/csv
   islands/<id>.csv    row, fajr, sunrise, dhuhr, asr, maghrib, isha
                       minutes after local midnight (Maldives time, UTC+5), island offset already applied
 corrections.csv       the 15 corrections, as category base times
+sites/dhivehi.mv.csv  every wrong value shown on dhivehi.mv (2026), with page links
 tools/fix_timetable.py    rebuilds data/ from upstream; stops if any "from" value doesn't match
 tools/check_timetable.py  the jump and order check
 ```
