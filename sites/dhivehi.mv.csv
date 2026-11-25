@@ -1,6 +1,6 @@
 atoll,island,site_island_id,date,prayer,site_shows,should_be,page
-L,Dhambidhoo,915,2026-01-31,Isha,19:28,19:38,https://dhivehi.mv/prayer-times/?iid=915
-L,Gamu,858,2026-01-31,Isha,19:28,19:38,https://dhivehi.mv/prayer-times/?iid=858
+L,Dhanbidhoo,915,2026-01-31,Isha,19:28,19:38,https://dhivehi.mv/prayer-times/?iid=915
+L,Gan,858,2026-01-31,Isha,19:28,19:38,https://dhivehi.mv/prayer-times/?iid=858
 L,Isdhoo,918,2026-01-31,Isha,19:28,19:38,https://dhivehi.mv/prayer-times/?iid=918
 L,Kalaidhoo,848,2026-01-31,Isha,19:28,19:38,https://dhivehi.mv/prayer-times/?iid=848
 L,Maabaidhoo,916,2026-01-31,Isha,19:28,19:38,https://dhivehi.mv/prayer-times/?iid=916
@@ -50,15 +50,15 @@ N,Manadhoo,153,2026-08-04,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?i
 N,Miladhoo,194,2026-08-04,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=194
 N,Tholhendhoo,170,2026-08-04,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=170
 GDh,Faresmaathodaa,1087,2026-09-04,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1087
-GDh,Fiyoari,1073,2026-09-04,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1073
+GDh,Fiyoaree,1073,2026-09-04,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1073
 GDh,Gadhdhoo,1136,2026-09-04,Sunrise,06:09,06:00,https://dhivehi.mv/prayer-times/?iid=1136
-GDh,Nadallaa,1032,2026-09-04,Sunrise,06:11,06:02,https://dhivehi.mv/prayer-times/?iid=1032
+GDh,Nadellaa,1032,2026-09-04,Sunrise,06:11,06:02,https://dhivehi.mv/prayer-times/?iid=1032
 GDh,Rathafandhoo,1095,2026-09-04,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1095
 GDh,Vaadhoo,1033,2026-09-04,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1033
 GDh,Faresmaathodaa,1087,2026-09-05,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1087
-GDh,Fiyoari,1073,2026-09-05,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1073
+GDh,Fiyoaree,1073,2026-09-05,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1073
 GDh,Gadhdhoo,1136,2026-09-05,Sunrise,06:09,06:00,https://dhivehi.mv/prayer-times/?iid=1136
-GDh,Nadallaa,1032,2026-09-05,Sunrise,06:11,06:02,https://dhivehi.mv/prayer-times/?iid=1032
+GDh,Nadellaa,1032,2026-09-05,Sunrise,06:11,06:02,https://dhivehi.mv/prayer-times/?iid=1032
 GDh,Rathafandhoo,1095,2026-09-05,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1095
 GDh,Vaadhoo,1033,2026-09-05,Sunrise,06:10,06:01,https://dhivehi.mv/prayer-times/?iid=1033
 GA,Dhaandhoo,982,2026-10-06,Dhuhr,12:59,11:59,https://dhivehi.mv/prayer-times/?iid=982
@@ -88,7 +88,7 @@ R,Kinolhas,223,2026-11-28,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?i
 R,Maduvvari,252,2026-11-28,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=252
 R,Meedhoo,258,2026-11-28,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=258
 R,Rasmaadhoo,242,2026-11-28,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=242
-Sh,Bilehffahi,122,2026-11-28,Sunrise,07:00,06:00,https://dhivehi.mv/prayer-times/?iid=122
+Sh,Bilehfahi,122,2026-11-28,Sunrise,07:00,06:00,https://dhivehi.mv/prayer-times/?iid=122
 Sh,Feevah,126,2026-11-28,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=126
 Sh,Feydhoo,124,2026-11-28,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=124
 Sh,Foakaidhoo,106,2026-11-28,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=106
@@ -109,7 +109,7 @@ R,Kinolhas,223,2026-11-29,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?i
 R,Maduvvari,252,2026-11-29,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=252
 R,Meedhoo,258,2026-11-29,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=258
 R,Rasmaadhoo,242,2026-11-29,Sunrise,06:59,05:59,https://dhivehi.mv/prayer-times/?iid=242
-Sh,Bilehffahi,122,2026-11-29,Sunrise,08:00,06:00,https://dhivehi.mv/prayer-times/?iid=122
+Sh,Bilehfahi,122,2026-11-29,Sunrise,08:00,06:00,https://dhivehi.mv/prayer-times/?iid=122
 Sh,Feevah,126,2026-11-29,Sunrise,07:59,05:59,https://dhivehi.mv/prayer-times/?iid=126
 Sh,Feydhoo,124,2026-11-29,Sunrise,07:59,05:59,https://dhivehi.mv/prayer-times/?iid=124
 Sh,Foakaidhoo,106,2026-11-29,Sunrise,07:59,05:59,https://dhivehi.mv/prayer-times/?iid=106
