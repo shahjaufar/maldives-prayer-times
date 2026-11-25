@@ -3,7 +3,8 @@
 Usage: python tools/fix_timetable.py <namaadhu_app>/assets/csv data
 
 Reads  <in>/atolls.csv, <in>/islands.csv, <in>/islands/<island_id>.csv
-Writes <out>/atolls.csv, <out>/islands.csv (copied unchanged) and <out>/islands/<island_id>.csv (corrected).
+Writes <out>/atolls.csv (copied unchanged), <out>/islands.csv (English names from names.csv) and
+       <out>/islands/<island_id>.csv (times from corrections.csv).
 
 Each correction in corrections.csv is given for the category base time (offset 0). It is applied to every island in
 that category, with the island's own minute offset added. Before changing a value, the script checks that the
@@ -71,13 +72,33 @@ def main(src, out):
     if errors:
         sys.exit("not applied:\n  " + "\n  ".join(errors))
 
+    # English names (names.csv): only the name_en field of each listed island's line changes.
+    with open(os.path.join(src, "islands.csv"), encoding="utf-8", newline="") as f:
+        island_lines = f.read().split("\r\n")
+    names = list(csv.DictReader(open(os.path.join(here, "..", "names.csv"), encoding="utf-8")))
+    for nm in names:
+        hits = [i for i, line in enumerate(island_lines) if line.split(",")[1:2] == [nm["island_id"]]]
+        if len(hits) != 1:
+            errors.append(f"names: island {nm['island_id']} found {len(hits)} times")
+            continue
+        fields = island_lines[hits[0]].split(",")
+        if fields[3] != nm["from"]:
+            errors.append(f"names: island {nm['island_id']}: expected {nm['from']!r}, found {fields[3]!r}")
+            continue
+        fields[3] = nm["to"]
+        island_lines[hits[0]] = ",".join(fields)
+    if errors:
+        sys.exit("not applied:\n  " + "\n  ".join(errors))
+
     os.makedirs(os.path.join(out, "islands"), exist_ok=True)
-    for name in ("atolls.csv", "islands.csv"):
-        shutil.copyfile(os.path.join(src, name), os.path.join(out, name))
+    shutil.copyfile(os.path.join(src, "atolls.csv"), os.path.join(out, "atolls.csv"))
+    with open(os.path.join(out, "islands.csv"), "w", encoding="utf-8", newline="") as f:
+        f.write("\r\n".join(island_lines))
     for iid, lines in files.items():
         with open(os.path.join(out, "islands", f"{iid}.csv"), "w", encoding="ascii", newline="") as f:
             f.write("\r\n".join(lines))
-    print(f"{len(corrections)} corrections, {changed} island values changed, {len(files)} island files written")
+    print(f"{len(corrections)} corrections, {changed} island values changed, {len(files)} island files written, "
+          f"{len(names)} island names corrected")
 
 
 if __name__ == "__main__":

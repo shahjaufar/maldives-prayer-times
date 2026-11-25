@@ -4,6 +4,7 @@ The island prayer timetable for the Maldives (205 islands, 42 timetable categori
 
 1. **How the rows are read.** The 366 rows are a leap-year calendar. Reading them by day of year shows the wrong day's times from 1 January to 28 February, and all year in leap years.
 2. **Bad values in the data.** 15 base values (114 island values) are wrong: mostly sunrise times an hour late, plus one Isha time 10 minutes early.
+3. **Island names.** 25 English island names are corrected to the official spelling (see [Island names](#island-names)).
 
 The data comes from [n4ff4h/namaadhu_app](https://github.com/n4ff4h/namaadhu_app) (MIT, commit `f610de5`), which copies the table used by the salatmv app. namaadhuvaguthu.com and dhivehi.mv have the same errors, plus one more (see [Websites with the same errors](#websites-with-the-same-errors)), so they seem to use the same source.
 
@@ -107,15 +108,53 @@ The dates in the table are the same in every year, because rows after February l
 
 | Category | Islands (offset, if not 0) |
 |---|---|
-| 44 | Sh. Noomaraa, Sh. Kanditheemu (+1), Sh. Goidhoo (+1), Sh. Feydhoo, Sh. Feevah, Sh. Bilehfahi (+1), Sh. Foakaidhoo, Sh. Narudhoo, Sh. Maakandoodhoo (inactive), Sh. Milandhoo |
+| 44 | Sh. Noomaraa, Sh. Kanditheemu (+1), Sh. Goidhoo (+1), Sh. Feydhoo, Sh. Feevah, Sh. Bilehffahi (+1), Sh. Foakaidhoo, Sh. Narudhoo, Sh. Maakandoodhoo (inactive), Sh. Milandhoo |
 | 50 | R. Rasmaadhoo, R. Innamaadhoo, R. Maduvvari, R. Inguraidhoo, R. Meedhoo, R. Fainu, R. Kinolhas |
 | 53 | B. Thulhaadhoo, B. Hithaadhoo, B. Fulhadhoo, B. Fehendhoo, B. Goidhoo |
-| 46 | N. Hembadhoo, N. Kendhikolhudhoo, N. Tholhendhoo (inactive), N. Maalhendhoo, N. Kudafaree, N. Landhoo, N. Maafaru, N. Lhohee, N. Miladhoo, N. Magoodhoo, N. Manadhoo |
+| 46 | N. Henbadhoo, N. Kendhikulhudhoo, N. Tholhendhoo (inactive), N. Maalhendhoo, N. Kudafari, N. Landhoo, N. Maafaru, N. Lhohi, N. Miladhoo, N. Magoodhoo, N. Manadhoo |
 | 81 | Gn. Fuvahmulah |
-| 80 | GDh. Nadella (+1), GDh. Gadhdhoo (−1), GDh. Rathafandhoo, GDh. Vaadhoo, GDh. Fiyoree, GDh. Maathoda, GDh. Fares |
-| 75 | L. Isdhoo, L. Dhambidhoo, L. Maabaidhoo, L. Mundoo, L. Kalhaidhoo (inactive), L. Gan |
+| 80 | GDh. Nadallaa (+1), GDh. Gadhdhoo (−1), GDh. Rathafandhoo, GDh. Vaadhoo, GDh. Fiyoari, GDh. Maathodaa, GDh. Fares |
+| 75 | L. Isdhoo, L. Dhambidhoo, L. Maabaidhoo, L. Mundoo, L. Kalaidhoo (inactive), L. Gamu |
 
 47 island files change. The other 158 are the same as upstream.
+
+---
+
+## Island names
+
+The English names in namaadhu_app are spelled inconsistently. They are corrected to the spelling of the Maldives Bureau of Statistics: Census 2022, *Island Level Indicator Sheet – Population* ([statisticsmaldives.gov.mv](https://statisticsmaldives.gov.mv/census-2022/)). There is one exception. Where the census leaves out a nasal n or m that the usual spelling has, the name is kept as it is: Kanditheemu, Vilingili, Ungoofaaru and Dhangethi, not Kaditheemu, Viligili, Ugoofaaru and Dhagethi. Where a name has both kinds of difference, only the n/m is kept: Kendhikolhudhoo becomes Kendhikulhudhoo, not Kedhikulhudhoo.
+
+Only the English names change. The Dhivehi names (`name_dv`) and Arabic names are as in namaadhu_app. Islands not in the census list, mostly inactive ones, keep their names. In the census, Fares and Maathoda are one island, Fares-Maathodaa; here they stay separate, and only Maathoda's spelling changes.
+
+| Atoll | Was | Now | Census 2022 | Dhivehi |
+|---|---|---|---|---|
+| HA. | Dhidhoo | **Dhidhdhoo** | Dhidhdhoo | ދިއްދޫ |
+| HA. | Fillaidhoo | **Filladhoo** | Filladhoo | ފިއްލަދޫ |
+| HDh. | Hanimadhoo | **Hanimaadhoo** | Hanimaadhoo | ހަނިމާދޫ |
+| HDh. | Naavaidhoo | **Naivaadhoo** | Naivaadhoo | ނައިވާދޫ |
+| HDh. | Nolhivaram | **Nolhivaramu** | Nolhivaramu | ނޮޅިވަރަމު |
+| HDh. | Kurinbee | **Kurinbi** | Kuribi | ކުރިނބި |
+| Sh. | Bilehfahi | **Bilehffahi** | Bilehffahi | ބިލެތްފަހި |
+| N. | Hembadhoo | **Henbadhoo** | Henbadhoo | ހެނބަދޫ |
+| N. | Kendhikolhudhoo | **Kendhikulhudhoo** | Kedhikulhudhoo | ކެނދިކުޅުދޫ |
+| N. | Kudafaree | **Kudafari** | Kudafari | ކުޑަފަރި |
+| N. | Lhohee | **Lhohi** | Lhohi | ޅޮހި |
+| N. | Fohdhoo | **Fodhdhoo** | Fodhdhoo | ފޮއްދޫ |
+| K. | Hura | **Huraa** | Huraa | ހުރާ |
+| AA. | Himendhoo | **Himandhoo** | Himandhoo | ހިމެންދޫ |
+| ADh. | Hanyameedhoo | **Hangnameedhoo** | Hangnameedhoo | ހަންޏާމީދޫ |
+| ADh. | Dhidhoo | **Dhidhdhoo** | Dhidhdhoo | ދިއްދޫ |
+| F. | Bilehdhoo | **Biledhdhoo** | Biledhdhoo | ބިލެތްދޫ |
+| Th. | Burunee | **Buruni** | Buruni | ބުރުނި |
+| Th. | Veymandhoo | **Veymandoo** | Veymandoo | ވޭމަންޑޫ |
+| L. | Kalhaidhoo | **Kalaidhoo** | Kalaidhoo | ކަޅައިދޫ |
+| L. | Gan | **Gamu** | Gamu | ގަން |
+| GDh. | Hoadedhoo | **Hoadedhdhoo** | Hoadedhdhoo | ހޯނޑެއްދޫ |
+| GDh. | Nadella | **Nadallaa** | Nadallaa | ނަޑައްލާ |
+| GDh. | Fiyoree | **Fiyoari** | Fiyoari | ފިޔޯރީ |
+| GDh. | Maathoda | **Maathodaa** | Fares-Maathodaa | މާތޮޑާ |
+
+The list is in [`names.csv`](names.csv). `tools/fix_timetable.py` applies it to `data/islands.csv`, and changes only the `name_en` field of those 25 lines.
 
 ---
 
@@ -133,7 +172,7 @@ Checked on 25 November 2026, for 2026.
 
 The Dhuhr error in category 77 is not in namaadhu_app, whose Dhuhr on those days is 11:59. It affects the five islands in that category: GA. Kolamaafushi, GA. Vilingili, GA. Maamendhoo, GA. Nilandhoo and GA. Dhaandhoo.
 
-On dhivehi.mv the year table at `/prayer-times/` (with no island chosen) is for category 77, though the island box shows K. Malé. With `?iid=480` it shows Malé's times. GDh. Fares and GDh. Maathoda appear there as one island, Faresmaathodaa.
+On dhivehi.mv the year table at `/prayer-times/` (with no island chosen) is for category 77, though the island box shows K. Malé. With `?iid=480` it shows Malé's times. GDh. Fares and GDh. Maathodaa appear there as one island, Faresmaathodaa.
 
 [`sites/dhivehi.mv.csv`](sites/dhivehi.mv.csv) lists every wrong value dhivehi.mv shows: 125 values across 50 islands, each with the site's island id, the date, what it shows, what it should be, and a link to the page. It was made by downloading each island's page from dhivehi.mv and comparing it with `data/`.
 
@@ -145,16 +184,17 @@ On dhivehi.mv the year table at `/prayer-times/` (with no island chosen) is for 
 data/                 corrected copy, same layout as namaadhu_app's assets/csv
   atolls.csv          atoll_id, name_en, abbr_en, abbr_dv, abbr_ar          (unchanged)
   islands.csv         category_id, island_id, atoll_id, name_en, name_dv, name_ar, offset_min, lat, lon, status
-                      (unchanged; a few rows have no lat/lon, and some Arabic names contain a comma)
+                      (only name_en changes, for 25 islands; a few rows have no lat/lon, and some Arabic names contain a comma)
   islands/<id>.csv    row, fajr, sunrise, dhuhr, asr, maghrib, isha
                       minutes after local midnight (Maldives time, UTC+5), island offset already applied
 corrections.csv       the 15 corrections, as category base times
+names.csv             the 25 English name corrections
 sites/dhivehi.mv.csv  every wrong value shown on dhivehi.mv (2026), with page links
 tools/fix_timetable.py    rebuilds data/ from upstream; stops if any "from" value doesn't match
 tools/check_timetable.py  the jump and order check
 ```
 
-The files in `data/` keep upstream's format exactly: CRLF line endings, no final newline. You can drop them into a namaadhu_app checkout.
+The files in `data/` keep upstream's format exactly: CRLF line endings, and no final newline in the island files. You can drop them into a namaadhu_app checkout.
 
 ### Rebuild and check
 
