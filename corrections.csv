@@ -1,0 +1,16 @@
+category,prayer,row,date,from,to,basis
+44,sunrise,332,28 Nov,06:59,05:59,hour digit wrong; neighbours 05:59 and 06:00
+44,sunrise,333,29 Nov,07:59,05:59,hour digit wrong; neighbours 05:59 and 06:00
+50,sunrise,332,28 Nov,06:59,05:59,hour digit wrong; neighbours 05:58 and 06:00
+50,sunrise,333,29 Nov,06:59,05:59,hour digit wrong; neighbours 05:58 and 06:00
+53,sunrise,332,28 Nov,06:58,05:58,hour digit wrong; neighbours 05:58 and 05:59
+53,sunrise,333,29 Nov,06:58,05:58,hour digit wrong; neighbours 05:58 and 05:59
+53,sunrise,334,30 Nov,06:59,05:59,hour digit wrong; neighbours 05:58 and 05:59
+46,sunrise,213,1 Aug,06:59,05:59,hour digit wrong; neighbours 05:59 and 06:00
+46,sunrise,214,2 Aug,06:59,05:59,hour digit wrong; neighbours 05:59 and 06:00
+46,sunrise,215,3 Aug,06:59,05:59,hour digit wrong; neighbours 05:59 and 06:00
+46,sunrise,216,4 Aug,06:59,05:59,hour digit wrong; neighbours 05:59 and 06:00
+81,sunrise,357,23 Dec,06:59,05:59,hour digit wrong; neighbours 05:59 and 06:00
+80,sunrise,247,4 Sep,06:10,06:01,neighbours 06:02 and 06:01; sun position gives 06:01
+80,sunrise,248,5 Sep,06:10,06:01,neighbours 06:02 and 06:01; sun position gives 06:01
+75,isha,30,31 Jan,19:28,19:38,neighbours 19:38 and 19:38; sun position gives 19:38
